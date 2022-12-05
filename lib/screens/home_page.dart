@@ -151,12 +151,18 @@ class _HomeState extends State<Home> {
     }
   }
 
+
+
   void xWins() {
     ganador = "J1:${_controllerJ1.value.text}-(X)";
     enableDisable = false;
     turno = "Termino";
     buttonenabled = false;
     enableDisableTxt = true;
+    ListadoDeJuegosState listJ = ListadoDeJuegosState();
+    print(_controllerJ1.text);
+    listJ.saveJuegos("Juego-3-en-raya", _controllerJ1.text, _controllerJ2.text, ganador, "Juego Finalizado", "100 pts");
+
   }
 
   void oWins() {
@@ -166,6 +172,9 @@ class _HomeState extends State<Home> {
     buttonenabled = false;
     enableDisableTxt = true;
     //REGISTRAR
+    ListadoDeJuegosState listJ = ListadoDeJuegosState();
+    print(_controllerJ1.text);
+    listJ.saveJuegos("Juego-3-en-raya", _controllerJ1.text, _controllerJ2.text, ganador, "Juego Finalizado", "100 pts");
   }
 
   @override
@@ -214,7 +223,7 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.only(bottom: 5.0),
                           child: TextField(
                               enabled: enableDisableTxt ? true : false,
-                              controller: _controllerJ2,
+                              controller: _controllerJ1,
                               decoration: InputDecoration(
                                 labelText: 'Jugador 1',
                               )),
@@ -223,7 +232,7 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.only(bottom: 5.0),
                           child: TextField(
                               enabled: enableDisableTxt ? true : false,
-                              controller: _controllerJ1,
+                              controller: _controllerJ2,
                               decoration: InputDecoration(
                                 labelText: "Jugador 2",
                               )),
